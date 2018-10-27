@@ -7,6 +7,10 @@ using namespace std;
 #define TRANSFER_DELAY 60*60*23
 #endif
 
+#ifndef REQUIRE_FROM
+#define REQUIRE_FROM "eosdacthedac"
+#endif
+
 class dacservice : public contract {
 
 public:

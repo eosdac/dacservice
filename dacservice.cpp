@@ -20,6 +20,8 @@ void dacservice::transfer(name from,
         return;
     }
 
+    eosio_assert(from == eosio::string_to_name(REQUIRE_FROM), "Can only receive tokens from a known account");
+
     size_t pos = memo.find(":");
 
     string act_name_str;
