@@ -3,8 +3,15 @@
 using namespace eosio;
 using namespace std;
 
+#define _STRINGIZE(x) #x
+#define STRINGIZE(x) _STRINGIZE(x)
+
 #ifndef TRANSFER_DELAY
-#define TRANSFER_DELAY 60*60*23
+#define TRANSFER_DELAY 60*60*1
+#endif
+
+#ifdef REQUIREFROM
+#define REQUIRE_FROM STRINGIZE(REQUIREFROM)
 #endif
 
 #ifndef REQUIRE_FROM
@@ -15,7 +22,7 @@ class dacservice : public contract {
 
 public:
 
-    dacservice(account_name self) : contract(self) {}
+    dacservice( name s, name code, datastream<const char*> ds ) : contract(s,code,ds){}
 
     ~dacservice() {}
 
