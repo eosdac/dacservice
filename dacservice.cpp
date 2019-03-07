@@ -16,7 +16,9 @@ void dacservice::transfer(name from,
                           asset quantity,
                           string memo) {
 
-    if (to != _self){
+    // Transfer is outgoing, or it is a transfer from system account (unstake, sell ram etc)
+    // Don't reject or modify the transfer
+    if (to != _self || from == "eosio"_n || from == "eosio.ram"_n || from == "eosio.stake"_n){
         return;
     }
 
