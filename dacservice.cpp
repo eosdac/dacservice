@@ -22,6 +22,12 @@ void dacservice::transfer(name from,
         return;
     }
 
+    // Check if memo starts with ! and allow this transfer with no forward
+    size_t first_char = memo.find("%");
+    if (first_char == 0){
+        return;
+    }
+
     eosio_assert(from == name(REQUIRE_FROM), "Can only receive tokens from a known account");
 
     size_t pos = memo.find(":");
