@@ -14,3 +14,16 @@ The contract will only accept transfers from the account specified at compile ti
 
 `eosio-cpp -DTRANSFER_DELAY=60 -DREQUIREFROM=fromaccount -o dacservice.wasm dacservice.cpp`
 
+## Adding code permission
+
+The active permission of the service account must have code permissions set.
+
+`cleos set account permission --add-code youraccount active youraccount owner`
+
+## Sending tokens
+
+The contract will then forward any payments sent to it by the trusted account
+
+`cleos transfer fromaccount serviceaccount "10 EOS" "toaccount:This is the memo"`
+
+The contract will forward 10 EOS (minus the service fee) to `toaccount` with the memo "This is the memo"
