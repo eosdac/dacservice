@@ -27,3 +27,9 @@ The contract will then forward any payments sent to it by the trusted account
 `cleos transfer fromaccount serviceaccount "10 EOS" "toaccount:This is the memo"`
 
 The contract will forward 10 EOS (minus the service fee) to `toaccount` with the memo "This is the memo"
+
+## Preventing forwarding
+
+Sometimes you may want to send tokens to the service account without them being forwarded.  To do this, start the memo with a `%`.
+
+`cleos transfer fromaccount serviceaccount "10 EOS" "%This will not be forwarded"`
